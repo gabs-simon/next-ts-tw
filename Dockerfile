@@ -1,5 +1,5 @@
 ARG nodeVersion=16
-ARG nodeImage=node:${nodeVersion}-buster
+ARG nodeImage=node:${nodeVersion}-alpine
 
 # --------
 # Stage 1
@@ -47,13 +47,13 @@ FROM $nodeImage as runner
 
 ENV NODE_ENV development
 
-# Installs zsh
-RUN apt-get update && apt-get install -y wget zsh
+# Installs zsh and other dependencies
+RUN apk add wget zsh git
 
 # Generates the user nextjs:nodejs, sets its default shell to zsh
-RUN addgroup --gid 1001 nodejs
+RUN addgroup -S nodejs
 RUN mkdir /home/nextjs
-RUN adduser nextjs --uid 1001 --gid 1001 --shell /bin/zsh --home /home/nextjs
+RUN adduser nextjs --shell /bin/zsh --home /home/nextjs -G nodejs -D
 
 WORKDIR /app/
 
@@ -67,6 +67,7 @@ COPY --from=builder /app/components ./components
 COPY --from=builder /app/pages ./pages
 COPY --from=builder /app/styles ./styles
 COPY --from=builder /app/utils ./utils
+COPY next.config.js .eslintrc.json next-env.d.ts postcss.config.js tailwind.config.js tsconfig.json .editorconfig ./
 
 # Sets permissions
 RUN chown -R nextjs:nodejs /app
@@ -79,7 +80,6 @@ RUN chown -R nextjs:nodejs /home/nextjs
 # As nextjs user, installs oh-my-zsh and exposes the 3000 port for development
 USER nextjs
 
-RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 RUN echo "ZSH_THEME=cloud" >> /home/nextjs/.zshrc
 
 EXPOSE 3000

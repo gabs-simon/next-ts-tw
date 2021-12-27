@@ -10,6 +10,7 @@
     "semantic-release": "npx semantic-release"
   },
   "dependencies": {
+    "@next/swc-linux-x64-gnu": "^11.1.2",
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2"

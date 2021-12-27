@@ -9,17 +9,27 @@
   "service": "app",
   "workspaceFolder": "/workspace",
   // Set *default* container specific settings.json values on container create.
-  "settings": {},
+  "settings": {
+    "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontFamily": "'MesloLGS NF', monospace",
+  },
   // Add the IDs of extensions you want installed when the container is created.
-  "extensions": []
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [],
-  // Uncomment the next line if you want start specific services in your Docker Compose config.
-  // "runServices": [],
-  // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
-  // "shutdownAction": "none",
-  // Uncomment the next line to run commands after the container is created - for example installing curl.
-  // "postCreateCommand": "apt-get update && apt-get install -y curl",
-  // Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
-  // "remoteUser": "vscode"
+  "extensions": [
+    "naumovs.color-highlight",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "github.copilot",
+    "ms-vscode.vscode-typescript-next",
+    "wix.vscode-import-cost",
+    "oderwat.indent-rainbow",
+    "christian-kohler.path-intellisense",
+    "csstools.postcss",
+    "bradlc.vscode-tailwindcss"
+  ],
+  "remoteUser": "nextjs",
+  "forwardPorts": [
+    3000
+  ],
+  "postStartCommand": "wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true"
 }
