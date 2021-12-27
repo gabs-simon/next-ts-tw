@@ -1,4 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a template [Next.js](https://nextjs.org/) app. 
+
+In addition to the default app bootstrapped with `create-next-app`, it also has some additional packages and features built-in:
+
+  - [Tailwind CSS](https://www.tailwindcss.com)
+ - [Typescript](https://www.typescriptlang.org/)
+ - [eslint](https://eslint.org/)
+ - [Semantic Release](https://semantic-release.gitbook.io/) (for NPM packages)
+ - A Dockerfile with an image for building and running the app
+ - A .devcontainer for running the app in development
 
 ## Getting Started
 
