@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 export default function Home() {
   return (
-    <div>
+    <div className="min-h-screen w-screen">
       <Head>
         <title>next-ts-tw</title>
         <meta name="description" content="NextJS, Typescript and Tailwind" />

@@ -69,6 +69,9 @@ COPY --from=builder /app/styles ./styles
 COPY --from=builder /app/utils ./utils
 COPY next.config.js .eslintrc.json next-env.d.ts postcss.config.js tailwind.config.js tsconfig.json .editorconfig ./
 
+# @TODO: This is a workaround for a SWC related bug on nextjs
+RUN npm i @next/swc-linux-x64-gnu -g
+
 # Sets permissions
 RUN chown -R nextjs:nodejs /app
 
